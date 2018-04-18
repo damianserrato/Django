@@ -1,0 +1,26 @@
+body {
+    text-align: center;
+}
+
+h2 {
+    color: blue;
+}
+div {
+    display: inline-block;
+}
+.amount {
+    border-style: 2px solid black;
+    height: 200px;
+    width: 200px;
+}
+.places div {
+    height: 200px;
+    width: 300px;
+    border: 2px solid green;
+    border-radius: 8px;
+    text-align: center;
+}
+.places {
+    width: 100%;
+    margin: 20px;
+}
