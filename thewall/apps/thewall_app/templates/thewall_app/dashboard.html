@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to your Dashboard, {{user}}</h1>
+
+    <fieldset>
+        <legend>Post a message</legend>
+        <form action="/message" method="POST">
+            {% csrf_token %}
+            <textarea name="message"></textarea>
+            <a href=""><button>Post a message</button></a>
+        </form>
+    </fieldset>
+
+    <a href="home"><button>Return</button></a>
+
+
+
+    <ul>
+        {% if somevariable %}
+        {% for x in check %}
+        <li>{{x.name}}</li>
+            <ul>
+                {% for user in x.manyusers.all %}
+                <li>{{user.message}}</li>
+                    <ul>
+                        {% for comment in x.manyusers.all%}
+                                {% for y in comment.messages.all %}
+                                {% if user.id == y.comments_id %}
+                                <li>{{y.comment}}</li>
+                                {% endif %}
+                                {% endfor %}
+                        {% endfor %}
+                    </ul>
+                    <form action="/comment/{{user.id}}" method="POST">
+                        {% csrf_token %}
+                        <textarea name="comment"></textarea>
+                        <a href=""><button>Post a Comment</button></a>
+                    </form>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        {% endif %}
+    </ul>
+
+
+
+    <ul>
+            {% for x in order%}
+                {{x.message}}
+            {% endfor %}
+    </ul>
+
+    
+
+    <a href="logout"><button>Logout</button></a>
+
+
+    {% for x in check %}
+    {{x.name}}
+    {% endfor %}
+
+</body>
+</html>
